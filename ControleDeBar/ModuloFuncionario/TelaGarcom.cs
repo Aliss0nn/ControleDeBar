@@ -10,9 +10,7 @@ namespace ControleDeBar.ModuloFuncionario
         {
             this.repositorioBase = repositorioGarcom;
 
-            nomeEntidade = "Garçom";
-            
-
+            nomeEntidade = "Garçom";           
         }
 
         public override void VisualizarContasEmAberto(ArrayList registros)

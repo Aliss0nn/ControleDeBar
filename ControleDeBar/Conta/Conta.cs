@@ -14,15 +14,15 @@ namespace ControleDeBar.Conta
     public class Conta : EntidadeBase
     {
         Mesa mesa;
-        
+        Pedido pedido;
         Garcom garcom;
         int totalDaComanda;
         public bool estaAberto;
 
-        public Conta(Mesa mesa,Garcom garcom, int totalDaComanda)
+        public Conta( Mesa mesa,Garcom garcom, int totalDaComanda, Pedido pedido)
         {
             this.mesa = mesa;
-           
+            this.pedido = pedido;
             this.garcom = garcom;
             this.totalDaComanda = totalDaComanda;
         }

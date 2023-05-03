@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -60,6 +61,8 @@ namespace ControleDeBar.Conta
         protected override EntidadeBase ObterRegistro()
         {          
             Mesa mesa = ObterMesa();
+
+            Pedido pedido = ObterPedido();
          
             Garcom garcom = ObterGarcom();
 
@@ -67,7 +70,18 @@ namespace ControleDeBar.Conta
             int totalDaComanda = int.Parse(Console.ReadLine());
 
 
-            return new Conta(mesa, garcom , totalDaComanda);            
+            return new Conta(mesa, garcom , totalDaComanda,pedido);            
+        }
+
+        private Pedido ObterPedido()
+        {
+            Console.Write("Digite o Pedido: ");
+            string pedido = Console.ReadLine();
+
+            Console.Write("Digite a quantidade: ");
+            int quantidade = int.Parse(Console.ReadLine());
+
+            return new Pedido(quantidade, pedido);
         }
 
         private Garcom ObterGarcom()

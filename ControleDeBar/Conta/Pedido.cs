@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControleDeBar.ModuloFuncionario;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,18 @@ namespace ControleDeBar.Conta
 {
     public class Pedido : EntidadeBase
     {
+        public int quantidade;
+        public string pedido;
+
+        public Pedido(int quantidade, string pedido)
+        {
+            this.quantidade = quantidade;
+            this.pedido = pedido;
+        }
+
         public override void AtualizarInformacoes(EntidadeBase registroAtualizado)
         {
-            throw new NotImplementedException();
+            Pedido pedidoAtualizado = (Pedido)registroAtualizado;
         }
 
         public override ArrayList Validar()
