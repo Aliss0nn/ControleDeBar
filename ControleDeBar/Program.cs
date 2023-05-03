@@ -33,6 +33,7 @@ namespace ControleDeBar
             TelaConta telaConta = new TelaConta(repositorioGarcom, repositorioMesa, repositorioConta, telaGarcom, telaMesa);
             #endregion
 
+            #region CadastroAutomatico          
             static void CadastrarAutomaticamente(RepositorioGarcom repositorioGarcom, RepositorioMesa repositorioMesa, RepositorioProduto repositorioProduto)
             {
                 Garcom garcom1 = new Garcom(88445566, "Mario", 1);
@@ -55,6 +56,8 @@ namespace ControleDeBar
                 repositorioProduto.Inserir(produto1);
                 repositorioProduto.Inserir(produto2);
             }
+            #endregion
+
 
 
             while (true)
@@ -147,15 +150,14 @@ namespace ControleDeBar
                         telaConta.AbrirNovaConta();
                     }
                     else if (subMenu == "2")
-                    {
-                        
+                    {                       
                         ArrayList registros = new ArrayList();
                         telaConta.VisualizarContasEmAberto(registros);
                         Console.ReadLine();
                     }
                     else if (subMenu == "3")
                     {
-
+                        telaConta.Fechar();
                     }
                     else if (subMenu == "4")
                     {

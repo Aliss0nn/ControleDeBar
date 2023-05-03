@@ -47,13 +47,7 @@ namespace ControleDeBar.Conta
             return erros;
         }
 
-        public void Fechar()
-        {
-            if (estaAberto)
-            {
-                estaAberto = false;              
-            }
-        }
+       
 
 
 
