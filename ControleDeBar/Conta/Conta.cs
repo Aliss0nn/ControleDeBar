@@ -1,6 +1,6 @@
 ﻿using ControleDeBar.ModuloFuncionario;
 using ControleDeBar.ModuloMesa;
-using ControleDeBar.ModuloPedido;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,15 +14,15 @@ namespace ControleDeBar.Conta
     public class Conta : EntidadeBase
     {
         Mesa mesa;
-        Pedido pedido;
+        
         Garcom garcom;
         int totalDaComanda;
         public bool estaAberto;
 
-        public Conta(Mesa mesa, Pedido pedido, Garcom garcom, int totalDaComanda)
+        public Conta(Mesa mesa,Garcom garcom, int totalDaComanda)
         {
             this.mesa = mesa;
-            this.pedido = pedido;
+           
             this.garcom = garcom;
             this.totalDaComanda = totalDaComanda;
         }
@@ -32,7 +32,7 @@ namespace ControleDeBar.Conta
             Conta contaAtualizada = (Conta)registroAtualizado;
 
             mesa = contaAtualizada.mesa;
-            pedido = contaAtualizada.pedido;
+           
             garcom = contaAtualizada.garcom;
             totalDaComanda = contaAtualizada.totalDaComanda;
         }

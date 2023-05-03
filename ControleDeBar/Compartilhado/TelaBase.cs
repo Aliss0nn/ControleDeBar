@@ -180,5 +180,7 @@ namespace ControleDeBar.ConsoleApp.Compartilhado
 
         public abstract void VisualizarContasEmAberto(ArrayList registros);
 
+        
+        
     }
 }

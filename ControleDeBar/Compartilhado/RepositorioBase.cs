@@ -65,5 +65,26 @@ namespace ControleDeBar.ConsoleApp.Compartilhado
         {
             return listaRegistros.Count > 0;
         }
+
+        protected bool ValidaValorNull(EntidadeBase entidade)
+        {
+            if (entidade != null)
+            {
+                Type tipo = entidade.GetType();
+
+                foreach (var atributo in tipo.GetFields())
+                {
+                    if (atributo.GetValue(entidade) == null)
+                    {
+                        Console.WriteLine($"Necessário o cadastro de \"{atributo.Name}\" para continuar", ConsoleColor.Red);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+      
+
     }
 }

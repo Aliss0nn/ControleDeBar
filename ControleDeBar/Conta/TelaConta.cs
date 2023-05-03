@@ -1,13 +1,14 @@
 ﻿using ControleDeBar.ConsoleApp.Compartilhado;
 using ControleDeBar.ModuloFuncionario;
 using ControleDeBar.ModuloMesa;
-using ControleDeBar.ModuloPedido;
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace ControleDeBar.Conta
 {
@@ -16,22 +17,30 @@ namespace ControleDeBar.Conta
         #region
         private RepositorioGarcom repositorioGarcom;
         private RepositorioMesa repositorioMesa;
-        private RepositorioPedido repositorioPedido;
         private RepositorioConta repositorioConta;
-             
+
         private TelaGarcom telaGarcom;
-        private TelaPedido telaPedido;
-        private TelaMesa telaMesa;
+        private TelaMesa telaMesa;       
         #endregion
 
-
-        public TelaConta(RepositorioConta repositorioConta )
+    
+        public TelaConta(RepositorioGarcom repositorioGarcom, 
+            RepositorioMesa repositorioMesa,
+            RepositorioConta repositorioConta,
+            TelaGarcom telaGarcom, TelaMesa telaMesa)
         {
-            this.repositorioBase = repositorioConta;         
+            this.repositorioBase = repositorioConta;
+            this.repositorioGarcom = repositorioGarcom;
+            this.repositorioMesa = repositorioMesa;
+            this.repositorioConta = repositorioConta;
+            this.telaGarcom = telaGarcom;
+            this.telaMesa = telaMesa;
+
+            nomeEntidade = "Conta";
+            sufixo = "s";
         }
 
-
-       public override void VisualizarContasEmAberto(ArrayList registros)
+        public override void VisualizarContasEmAberto(ArrayList registros)
         {
             Console.WriteLine();
 
@@ -51,21 +60,19 @@ namespace ControleDeBar.Conta
         protected override EntidadeBase ObterRegistro()
         {          
             Mesa mesa = ObterMesa();
-
-            Pedido pedido = ObterPedido();
-
+         
             Garcom garcom = ObterGarcom();
 
             Console.Write("Digite o total Da Comanda: ");
             int totalDaComanda = int.Parse(Console.ReadLine());
 
 
-            return new Conta(mesa, pedido, garcom , totalDaComanda);            
+            return new Conta(mesa, garcom , totalDaComanda);            
         }
 
         private Garcom ObterGarcom()
         {
-            telaGarcom.VisualizarRegistros(false);
+            this.telaGarcom.VisualizarRegistros(false);
 
             Console.Write("\nDigite o id do Garçom: ");
             int idGarcom = Convert.ToInt32(Console.ReadLine());
@@ -76,24 +83,10 @@ namespace ControleDeBar.Conta
 
             return garcom;
         }
-
-        private Pedido ObterPedido()
-        {
-            telaPedido.VisualizarRegistros(false);
-
-            Console.Write("\nDigite o id do Pedido: ");
-            int idPedido = Convert.ToInt32(Console.ReadLine());
-
-            Pedido pedido = (Pedido)repositorioPedido.SelecionarPorId(idPedido);
-
-            Console.WriteLine();
-
-            return pedido;
-        }
-
+    
         private Mesa ObterMesa()
         {
-            telaMesa.VisualizarRegistros(false);
+            this.telaMesa.VisualizarRegistros(false);
 
             Console.Write("\nDigite o id do Pedido: ");
             int idMesa = Convert.ToInt32(Console.ReadLine());
@@ -109,8 +102,6 @@ namespace ControleDeBar.Conta
         public override void ExcluirRegistro()
         {
             MostrarCabecalho("Cadastro de Empréstimos", "Fechando um empréstimo...");
-
-
 
             ArrayList ContasemAberto = repositorioConta.SelecionarContasEmAberto();
 
@@ -141,11 +132,13 @@ namespace ControleDeBar.Conta
 
             Console.WriteLine("Cadastro de Contas \n");
 
-            Console.WriteLine("Digite 1 para Abrir uma nova Conta ");
-            Console.WriteLine("Digite 2 para Visualizar as Contas");
-       
-            Console.WriteLine("Digite 3 para Fechar as Contas\n");
-           
+            Console.WriteLine("[1] para Abrir uma nova Conta ");
+            Console.WriteLine("[2] para Visualizar as Contas");       
+            Console.WriteLine("[3] para Fechar as Contas");
+            Console.WriteLine("[4] para ver o total faturado\n");
+
+
+
             Console.WriteLine("Digite s para Sair");
 
             string opcao = Console.ReadLine();

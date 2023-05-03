@@ -1,7 +1,7 @@
 ﻿using ControleDeBar.Conta;
 using ControleDeBar.ModuloFuncionario;
 using ControleDeBar.ModuloMesa;
-using ControleDeBar.ModuloPedido;
+
 using ControleDeBar.ModuloProduto;
 using System;
 using System.Collections;
@@ -17,7 +17,7 @@ namespace ControleDeBar
             RepositorioGarcom repositorioGarcom = new RepositorioGarcom(new ArrayList());
             RepositorioMesa repositorioMesa = new RepositorioMesa(new ArrayList());
             RepositorioProduto repositorioProduto = new RepositorioProduto(new ArrayList());
-            RepositorioPedido repositorioPedido = new RepositorioPedido(new ArrayList());
+           
             RepositorioConta repositorioConta = new RepositorioConta(new ArrayList());
 
 
@@ -25,8 +25,8 @@ namespace ControleDeBar
             TelaMesa telaMesa = new TelaMesa(repositorioMesa);
             TelaProduto telaProduto = new TelaProduto(repositorioProduto);
             TelaGarcom telaGarcom = new TelaGarcom(repositorioGarcom);
-            TelaPedido telaPedido = new TelaPedido(repositorioPedido);
-            TelaConta telaConta = new TelaConta(repositorioConta);
+           
+            TelaConta telaConta = new TelaConta(repositorioGarcom,repositorioMesa,repositorioConta,telaGarcom,telaMesa);
 
 
 
@@ -104,30 +104,8 @@ namespace ControleDeBar
                         telaProduto.ExcluirRegistro();
                     }
                 }
+                
                 if (opcao == "4")
-                {
-                    string subMenu = telaPedido.ApresentarMenu();
-
-                    if (subMenu == "1")
-                    {
-                        telaPedido.InserirNovoRegistro();
-                    }
-                    else if (subMenu == "2")
-                    {
-                        telaPedido.VisualizarRegistros(true);
-                        Console.ReadLine();
-                    }
-                    else if (subMenu == "3")
-                    {
-                        telaPedido.EditarRegistro();
-                    }
-                    else if (subMenu == "4")
-                    {
-                        telaPedido.ExcluirRegistro();
-                    }
-
-                }
-                if (opcao == "5")
                 {
                     string subMenu = telaConta.ApresentarMenu();
 
@@ -143,11 +121,11 @@ namespace ControleDeBar
                     }
                     else if (subMenu == "3")
                     {
-                        telaPedido.ExcluirRegistro();
+                        
                     }
                     else if (subMenu == "4")
                     {
-                        telaPedido.ExcluirRegistro();
+                        
                     }
                 }
 
