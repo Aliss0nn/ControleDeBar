@@ -160,6 +160,11 @@ namespace ControleDeBar.Conta
             return opcao;
         }
 
+        public void AbrirNovaConta()
+        {
+            base.InserirNovoRegistro();
+        }
+
         
     }
 }
