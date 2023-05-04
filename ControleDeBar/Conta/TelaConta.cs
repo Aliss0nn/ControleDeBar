@@ -165,13 +165,7 @@ namespace ControleDeBar.Conta
             base.InserirNovoRegistro();
         }
 
-        public void Fechar()
-        {
-            if (estaAberto)
-            {
-                estaAberto = false;
-            }
-        }
+        
 
 
     }
