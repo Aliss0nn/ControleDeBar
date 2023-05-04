@@ -9,5 +9,5 @@ sistema que ajude a controlar as questões financeiras do estabelecimento.
 ![image (1)](https://user-images.githubusercontent.com/127152046/236309717-0ea6e6ef-cbb5-43d0-86bd-43dc8be648f5.png)
 
 
-🍻 *BAR DA GALERA* 🍻
+[🍻 *BAR DA GALERA* 🍻](https://images.emojiterra.com/google/noto-emoji/animated/1f37b.webp)
 
